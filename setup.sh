@@ -9,6 +9,9 @@ if [ -d "$DOCKER_COMPOSE_DIR" ]; then
     exit 1
 fi
 
+touch "$DOCKER_COMPOSE_DIR/.env"
+touch "$DOCKER_COMPOSE_DIR/config.conf"
+
 DOCKER_COMPOSE_BIN_DIR="$DOCKER_COMPOSE_DIR/bin"
 mkdir -vp "$DOCKER_COMPOSE_BIN_DIR"
 
