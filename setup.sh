@@ -16,7 +16,7 @@ echo "==> Installing composectl to $BASE_DIR"
 if [ -d "$BASE_DIR" ]; then
     echo "Warning: Directory '$BASE_DIR' already exists."
     printf "Reinstall? [y/N] "
-    read -r answer
+    read -r answer </dev/tty || answer="n"
     case "$answer" in
         [yY]*) ;;
         *) echo "Aborted."; exit 1 ;;
