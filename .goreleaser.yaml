@@ -9,9 +9,7 @@ before:
     - go generate ./...
 
 builds:
-  - id: composectl
-    binary: composectl
-    env:
+  - env:
       - CGO_ENABLED=0
     goos:
       - linux
@@ -22,13 +20,8 @@ builds:
       - -X github.com/kreigan/adm-composectl/cmd.version={{.Version}}
 
 archives:
-  - id: binary
-    formats:
-      - binary
+  - formats: [binary]
     name_template: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}"
-
-checksum:
-  name_template: "checksums.txt"
 
 changelog:
   groups:
@@ -51,11 +44,3 @@ changelog:
       - "^chore:"
       - Merge pull request
       - Merge branch
-
-release:
-  github:
-    owner: kreigan
-    name: adm-composectl
-  draft: false
-  prerelease: auto
-  name_template: "v{{.Version}}"
